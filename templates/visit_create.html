@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3">
+            <div class="card p-5">
+                <h2 class="mb-5 text-center">Create New Visit</h2>
+                <form action="" method="POST">
+                    <div class="form-group mb-3">
+                        <label for="patient_fname">Patient</label>
+                            <select name="patient_name" class="form-control" id="patient_fname">
+                                {% for patient in patient %}
+                                <option value="{{ patient.patient_name }}">{{ patient.some_column_name }}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="patient_dob">Date of Birth:</label>
+                        <select name="patient_dob" class="form-control" id="patient_dob">
+                            {% for patient in patient %}
+                            <option value="{{ patient.patient_dob }}">{{ patient.some_column_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dos">Date of Visit:</label>
+                        <input type="date" class="form-control" id="dos" placeholder="Contact Number"
+                        name="dos" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="visit_doctor">Doctor:</label>
+                        <select name="dos" class="form-control" id="dos">
+                            {% for patient in patient %}
+                            <option value="{{ doctor.doctor_fname, doctor.doctor_fname}}">{{ doctor.some_column_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="visit_hospital">Hospital:</label>
+                        <select name="visit_hospital" class="form-control" id="visit_hospital">
+                            {% for patient in patient %}
+                            <option value="{{ hospital.hospital_name}}">{{ hospital.some_column_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="vsist_create_date">Create Date:</label>
+                        <input type="date" class="form-control" id="vsist_create_date" placeholder="Contact Number"
+                            name="vsist_create_date" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="text-center">
+                            <button class="btn btn-dark" type="submit" name="Submit" value="Submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

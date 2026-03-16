@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3">
+            <div class="card p-5">
+                <h2 class="mb-5 text-center">Hospital Information Update!</h2>
+                <form action="{{ url_for('hospital_update', id=hospital.id) }}" method="POST">
+                    <div class="form-group mb-3">
+                        <label for="hospital_name">Hospital Name:</label>
+                        <input type="text" value="{{hospital.hospital_name}}" class="form-control" id="hospital_name"
+                            placeholder="Enter Hospital Name" name="hospital_name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="hospital_company_name">Hospital Company Name:</label>
+                        <input type="text" value="{{hospital.hospital_company_name}}" class="form-control"
+                            id="hospital_company_name" placeholder="Enter Company Name" name="hospital_company_name"
+                            required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="hospital_email">Email:</label>
+                        <input type="email" value="{{hospital.hospital_email}}" class="form-control" id="hospital_email"
+                            placeholder="Enter email" name="hospital_email" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="hospital_contact">Contact Number:</label>
+                        <input type="tel" value="{{hospital.hospital_contact}}" class="form-control"
+                            id="hospital_contact" placeholder="Contact Number" name="hospital_contact" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="hospital_address">Address</label>
+                        <input type="text" value="{{hospital.hospital_address}}" class="form-control"
+                            id="hospital_address" placeholder="Enter Address" name="hospital_address" required>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-dark" type="submit" name="Submit">Update</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

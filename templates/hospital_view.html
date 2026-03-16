@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block body %}
+<h1>Hospitals</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/hospital_create" class="btn btn-primary" type="button">Add new</a>
+</div>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Hospital Name</th>
+      <th scope="col">Hospital Company Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Address</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hospital in hospital %}
+    <tr>
+      <td scope="row">{{hospital.id}}</td>
+      <td>{{hospital.hospital_name}}</td>
+      <td>{{hospital.hospital_company_name}}</td>
+      <td>{{hospital.hospital_email}}</td>
+      <td>{{hospital.hospital_contact}}</td>
+      <td>{{hospital.hospital_address}}</td>
+      <td>
+        <a href="/hospital_update/{{hospital.id}}" type="button" class="btn btn-secondary">Edit</a>
+        <a href="/delete/hospital/{{hospital.id}}" type="button" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  <div>
+    {% for hospital_item in hospital %}
+    {{ hospital_item.some_column_name }}
+    {% endfor %}
+    <b>Total Number of Hospitals: {{ hospital_count }}</b>
+  </div>
+{% endblock body %}

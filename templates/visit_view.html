@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block body %}
+<h1>Create Visit</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/visit_create" class="btn btn-primary" type="button">Add Visit</a>
+</div>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Date of Visit</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">Hospital</th>
+      <th scope="col">Create Date</th>
+      <th scope="col" class="" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <!-- <tbody>
+    {% for patient in new_patient %}
+    <tr>
+      <td>{{patient.patient_id}}</td>
+      <td>{{patient.patient_fname}}</td>
+      <td>{{patient.patient_lname}}</td>
+      <td>{{ patient.patient_dob.strftime('%Y-%m-%d') }}</td>
+      <td>{{patient.patient_aadhar}}</td>
+      <td>{{patient.patient_email}}</td>
+      <td>{{patient.patient_contact}}</td>
+      <td>{{patient.patient_address}}</td>
+      <td>
+        <a href="/patient_update/{{patient.patient_id}}" type="button" class="btn btn-secondary">Edit</a>
+        <a href="/delete/patient/{{patient.patient_id}}" type="button" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody> -->
+</table>
+<div>
+  {% for visit in visit %}
+  {{ visit.some_column_name }}
+  {% endfor %}
+  <b>Total Number of Visits: {{ visit_count }}</b>
+</div>
+{% endblock body %}

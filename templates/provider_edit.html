@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 offset-3">
+			<div class="card p-5">
+				<h2 class="mb-5 text-center">Doctor Information Update!</h2>
+				<form action="{{ url_for('provider_update', id=demo.id) }}" method="POST">
+					<div class="form-group mb-3">
+						<label for="fname">First Name:</label>
+						<input type="text" value="{{demo.fname}}" class="form-control" id="fname" placeholder="Enter First Name"
+							name="firstname" required>
+					</div>
+					<div class="form-group mb-3">
+						<label for="lname">Last Name:</label>
+						<input type="text" value="{{demo.lname}}" class="form-control" id="lname" placeholder="Enter Last Name" name="lastname"
+							required>
+					</div>
+					<div class="form-group mb-3">
+						<label for="dob">Date of Birth:</label>
+						<input type="date" value="{{demo.dob}}" class="form-control" id="dob" placeholder="Date of Birth" name="dob"
+							required>
+					</div>
+					<div class="form-group mb-3">
+						<label for="email">Email:</label>
+						<input type="email" value="{{demo.email}}" class="form-control" id="email" placeholder="Enter email" name="email"
+							required>
+					</div>
+					<div class="form-group mb-3">
+						<label for="phone">Contact Number:</label>
+						<input type="tel" value="{{demo.contact}}" class="form-control" id="phone" placeholder="Contact Number" name="phone"
+							required>
+					</div>
+					<div class="form-group mb-3">
+						<label for="phone">Seclect Dgree:</label>
+						<div class="form-group mb-3">
+							<select name="degree" value="{{demo.degree}}" class="btn btn-primary dropdown-toggle btn-block" type="button"
+								id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<option class="dropdown-item" type="button" value="{{demo.degree}}">Please select
+								</option>
+								<!-- Doctor of Medicine  -->
+								<option class="dropdown-item" type="button" value="MD">MD</option>
+								<!-- Doctor of Osteopathic Medicine  -->
+								<option class="dropdown-item" type="button" value="DO">DO</option>
+								<!-- Doctor of Dental Surgery -->
+								<option class="dropdown-item" type="button" value="DDS">DDS</option>
+								<!-- Doctor of Veterinary Medicine -->
+								<option class="dropdown-item" type="button" value="DVM">DVM</option>
+								<!-- Doctor of Philosophy -->
+								<option class="dropdown-item" type="button" value="Phd">PhD</option>
+							</select>
+
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="address">Address</label>
+						<input type="text" value="{{demo.address}}" class="form-control" id="address" placeholder="Enter Address" name="address"
+							required>
+					</div>
+					<div class="text-center">
+						<button class="btn btn-dark" type="submit" name="Submit" value="Submit">Update</button>
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock body %}

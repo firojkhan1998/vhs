@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block body %}
+<h1 class="pn pl20 p5 text-center mb-5">Dashboard</h1>
+<div class="row ">
+    <div class="col-sm-6 col-md-3">
+        <div class="shadow-lg bg-body rounded bg-info  of-h mb10">
+            <div class="pn pl20 p5 text-center">
+                <h2 class="mt15 lh15">
+                    <b>0</b>
+                </h2>
+                <h5>Visits</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="shadow-lg p mb-2 bg-body rounded bg-primary of-h mb10">
+            <div class="pn pl20 p5 text-center">
+                <h2 class="mt15 lh15">
+                    <b>{{ count }}</b>
+                </h2>
+                <h5>Doctors</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="shadow-lg p mb-2 bg-body rounded bg-success of-h mb10">
+            <div class="pn pl20 p5 text-center">
+                <h2 class="mt15 lh15">
+                    <b>{{ patient_count }}</b>
+                </h2>
+                <h5>Patients</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="shadow-lg p mb-2 bg-body rounded bg-warning of-h mb10">
+            <div class="pn pl20 p5 text-center">
+                <h2 class="mt15 lh15">
+                    <b>{{ hospital_count }}</b>
+                </h2>
+                <h5>Hospital</h5>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-6 col-md-2">
+        <div class="shadow-lg p mb-2 bg-body rounded bg-danger of-h mb10">
+            <div class="pn pl20 p5 text-center">
+                <h2 class="mt15 lh15">
+                    <b>13</b>
+                </h2>
+                <h5>Users</h5>
+            </div>
+        </div>
+    </div> -->
+</div>
+{% endblock body %}

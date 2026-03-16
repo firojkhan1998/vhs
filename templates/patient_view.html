@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block body %}
+<h1>Patients</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/patient_create" class="btn btn-primary" type="button">Add new</a>
+</div>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Aadhar Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Address</th>
+      <th scope="col" class="" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for patient in new_patient %}
+    <tr>
+      <td>{{patient.patient_id}}</td>
+      <td>{{patient.patient_fname}}</td>
+      <td>{{patient.patient_lname}}</td>
+      <td>{{ patient.patient_dob.strftime('%Y-%m-%d') }}</td>
+      <td>{{patient.patient_aadhar}}</td>
+      <td>{{patient.patient_email}}</td>
+      <td>{{patient.patient_contact}}</td>
+      <td>{{patient.patient_address}}</td>
+      <td>
+        <a href="/patient_update/{{patient.patient_id}}" type="button" class="btn btn-secondary">Edit</a>
+        <a href="/delete/patient/{{patient.patient_id}}" type="button" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div>
+  {% for patient in new_patient %}
+  {{ patient.some_column_name }}
+  {% endfor %}
+  <b>Total Number of Patients: {{ patient_count }}</b>
+</div>
+{% endblock body %}

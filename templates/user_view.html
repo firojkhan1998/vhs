@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block body %}
+<h1>User</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a href="/registration" class="btn btn-primary" type="button">Add new</a>
+</div>
+<br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col" class="" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.user_name}}</td>
+            <td>{{user.user_email}}</td>
+            <td>
+                <a href="/user_update/{{user.id}}" type="button" class="btn btn-secondary">Edit</a>
+                <a href="/delete/user/{{user.id}}" type="button" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div>
+    {% for user in user %}
+    {{ user.some_column_name }}
+    {% endfor %}
+    <b>Total Number of User: {{ count }}</b>
+  </div>
+{% endblock body %}
