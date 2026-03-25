@@ -4,13 +4,21 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import bcrypt
 import os
+import urllib
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///demo.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'secret_key'
+params = urllib.parse.quote_plus(
+    f"DRIVER={{ODBC Driver 18 for SQL Server}};"
+    f"SERVER={os.getenv('DB_SERVER')};"
+    f"DATABASE={os.getenv('DB_NAME')};"
+    f"UID={os.getenv('DB_USER')};"
+    f"PWD={os.getenv('DB_PASS')}"
+)
 
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mssql+pyodbc:///?odbc_connect={params}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = os.getenv("SECRET_KEY", "fallback-secret")
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -94,7 +102,10 @@ def user_update(id):
         if request.method == "POST":
             user.user_name = request.form.get('name')
             user.user_email = request.form.get('email')
-            user.user_password = request.form.get('password')
+            user.user_password = bcrypt.hashpw(
+                request.form.get('password').encode('utf-8'),
+                bcrypt.gensalt()
+            ).decode('utf-8')
 
             db.session.commit()
 
@@ -358,8 +369,8 @@ def delete_hospital(id):
     return redirect(url_for('hospital_view'))
 
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True) 
+    app.run(host="0.0.0.0", port=5000) 
