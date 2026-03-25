@@ -8,15 +8,12 @@ import urllib
 
 
 app = Flask(__name__)
-params = urllib.parse.quote_plus(
-    f"DRIVER={{ODBC Driver 18 for SQL Server}};"
-    f"SERVER={os.getenv('DB_SERVER')};"
-    f"DATABASE={os.getenv('DB_NAME')};"
-    f"UID={os.getenv('DB_USER')};"
-    f"PWD={os.getenv('DB_PASS')}"
-)
+DB_USER = os.getenv("DB_USER")
+DB_PASS = os.getenv("DB_PASS")
+DB_HOST = os.getenv("DB_HOST")  # e.g., vhs-server.postgres.database.azure.com
+DB_NAME = os.getenv("DB_NAME")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mssql+pyodbc:///?odbc_connect={params}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:5432/{DB_NAME}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = os.getenv("SECRET_KEY", "fallback-secret")
 db = SQLAlchemy(app)
@@ -370,7 +367,7 @@ def delete_hospital(id):
 
 
 # with app.app_context():
-#     db.create_all()
+    # db.create_all()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000) 
